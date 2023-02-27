@@ -1,0 +1,20 @@
+﻿@model DirectoryStructure.Models.Directory;
+
+<h2>@Model.Name</h2>
+
+@if (Model.Children.Any())
+{
+    <h3>Sub-Catalogs</h3>
+    <ul>
+        @foreach (var child in Model.Children)
+        {
+            <li>
+                <a href="@Url.Action("Details", "Directory", new { id = child.Id })">@child.Name</a>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>There are not children folders</p>
+}

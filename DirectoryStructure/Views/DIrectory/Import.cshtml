@@ -1,0 +1,32 @@
+﻿@model string
+
+<h2>@ViewBag.Title</h2>
+<h3>Import from OS</h3>
+
+@using (Html.BeginForm("ImportFromOS", "Directory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        <label for="pathInput">Enter path to save directory structure:</label>
+        <input type="text" class="form-control" id="path" name="path" value="@Model" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Import</button>
+}
+
+<h3>Import from file</h3>
+
+@using (Html.BeginForm("ImportDirectories", "Directory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        <label for="file">CSV File:</label>
+        <input type="file" id="file" name="file" class="form-control-file" />
+    </div>
+    <button type="submit" class="btn btn-primary">Import</button>
+}
+
+<h3>Export from file</h3>
+
+@using (Html.BeginForm("ExportDirectories", "Directory", FormMethod.Post, new { enctype = "multipart/form-data"} ))
+{
+        <button type="submit" class="btn btn-primary">Export File</button>
+}
